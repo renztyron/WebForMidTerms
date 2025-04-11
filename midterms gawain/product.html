@@ -1,0 +1,205 @@
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Product Details - Renz</title> 
+    <!-- Bootstrap CSS --> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> 
+    <!-- Custom CSS --> 
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body> 
+    <header class="bg-dark text-white text-center p-4"> 
+        <h1>Gadgets Hub</h1> 
+        <p>Find the best products at affordable prices</p>
+        <nav class="navbar navbar-expand navbar-dark">
+            <div class="container-fluid justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">Cart <span id="cart-counter" class="badge bg-primary">0</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+ 
+    <div class="container my-5"> 
+        <div class="mb-4"> 
+            <a href="products.html" class="btn btn-secondary">← Back to Products</a> 
+        </div> 
+         
+        <div class="row" id="product-details"> 
+            <!-- Product Image -->
+            <div class="col-md-6"> 
+                <div class="product-image-container"> 
+                    <img id="product-image" src="" class="img-fluid rounded product-detail-image" alt=""> 
+                </div> 
+            </div> 
+            <div class="col-md-6"> 
+                <h2 id="product-name" class="mb-3"></h2> 
+                <p id="product-price" class="text-primary fw-bold fs-4 mb-3"></p> 
+                <div class="mb-4">
+                    <p id="product-description"></p> 
+                    <ul id="product-features"> 
+                    </ul> 
+                </div>
+                
+                <form class="mb-4">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="quantity" class="col-form-label">Quantity:</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="number" id="quantity" class="form-control" value="1" min="1" max="10">
+                        </div>
+                    </div>
+                </form>
+                
+                <div class="d-grid gap-2"> 
+                    <button class="btn btn-primary btn-lg add-to-cart-detail">Add to Cart</button> 
+                    <button class="btn btn-outline-secondary btn-lg">Add to Wishlist</button> 
+                </div> 
+            </div> 
+        </div>
+        
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3 class="mb-4">Related Products</h3>
+                <div class="row" id="related-products">
+                    <!-- Related products will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div> 
+ 
+    <footer class="bg-dark text-white text-center p-3 mt-5"> 
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Home</a></li>
+                        <li><a href="products.html" class="text-white">Products</a></li>
+                        <li><a href="cart.html" class="text-white">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p>Email: info@renzshop.com</p>
+                    <p>Phone: (02) 8123 4567</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-2">Facebook</a>
+                        <a href="#" class="text-white me-2">Twitter</a>
+                        <a href="#" class="text-white">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3">
+                <p>© 2025 Renz Shop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+ 
+    <!-- Bootstrap JS --> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Product Details Script -->
+    <script>
+        // This would be replaced with actual product data fetching from database or JSON
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            
+            // Sample product data - in a real app, this would come from an API
+            const products = {
+                "1": {
+                    name: "Wireless Headphones",
+                    price: "₱7,299.00",
+                    image: "bago/headphones.jpg",
+                    description: "Experience premium sound quality with our wireless headphones featuring advanced noise cancellation technology.",
+                    features: [
+                        "Active noise cancellation blocks out ambient noise",
+                        "Up to 30 hours of battery life on a single charge",
+                        "Comfortable over-ear design with memory foam ear cups",
+                        "Bluetooth 5.0 for stable connectivity up to 33 feet",
+                        "Built-in microphone for hands-free calls",
+                        "Foldable design for easy storage and travel"
+                    ]
+                },
+                "2": {
+                    name: "Smart Watch",
+                    price: "₱5,099.00",
+                    image: "bago/watch.jpg",
+                    description: "Stay connected and track your fitness with our advanced smart watch.",
+                    features: [
+                        "Heart rate and blood oxygen monitoring",
+                        "Sleep tracking with detailed analysis",
+                        "Water resistant up to 50 meters",
+                        "7-day battery life on a single charge",
+                        "Notifications for calls, messages, and apps"
+                    ]
+                },
+                // Add all other products similarly
+                "3": {
+                    name: "Portable Speaker",
+                    price: "₱3,399.00",
+                    image: "bago/speaker.jpg",
+                    description: "Take your music anywhere with our waterproof portable speaker.",
+                    features: [
+                        "IP67 waterproof and dustproof rating",
+                        "20-hour battery life on a single charge",
+                        "360° surround sound with deep bass",
+                        "Bluetooth 5.0 connectivity",
+                        "Built-in microphone for hands-free calls"
+                    ]
+                },
+                // Continue for all 10 products...
+                "10": {
+                    name: "Smart Home Hub",
+                    price: "₱8,499.00",
+                    image: "bago/hub.jpg",
+                    description: "Control all your smart home devices from one central hub.",
+                    features: [
+                        "Works with all major smart home brands",
+                        "Voice control compatible",
+                        "Automation routines for smart devices",
+                        "Secure encrypted connections",
+                        "Easy setup with mobile app"
+                    ]
+                }
+            };
+
+            if (productId && products[productId]) {
+                const product = products[productId];
+                document.getElementById('product-name').textContent = product.name;
+                document.getElementById('product-price').textContent = product.price;
+                document.getElementById('product-image').src = product.image;
+                document.getElementById('product-image').alt = product.name;
+                document.getElementById('product-description').textContent = product.description;
+                
+                const featuresList = document.getElementById('product-features');
+                product.features.forEach(feature => {
+                    const li = document.createElement('li');
+                    li.textContent = feature;
+                    featuresList.appendChild(li);
+                });
+
+                // Set up add to cart button
+                document.querySelector('.add-to-cart-detail').setAttribute('data-id', productId);
+                document.querySelector('.add-to-cart-detail').setAttribute('data-name', product.name);
+                document.querySelector('.add-to-cart-detail').setAttribute('data-price', product.price.replace('₱', '').replace(',', ''));
+            }
+        });
+          
+    </script>
+      <script src="shoppingcart.js"></script>
+</body> 
+</html>
